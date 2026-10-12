@@ -1,6 +1,6 @@
-# XJM-free Homebrew Tap
+# Quiet Orbit Homebrew Tap
 
-This Tap packages stable, checksum-pinned releases maintained by XJM-free.
+This Tap packages stable, checksum-pinned releases maintained by Quiet Orbit.
 Formula changes and bottle publication require human review.
 
 Install a listed formula with its fully qualified name:
