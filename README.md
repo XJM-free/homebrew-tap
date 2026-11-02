@@ -10,24 +10,21 @@ A Homebrew tap for small tools from the Zemixo workshop.
 
 ## Availability
 
-There are currently **no installable formulae on `main`**.
-[Draft PR #1](https://github.com/zemixo/homebrew-tap/pull/1) proposes a
-checksum-pinned formula for the published `claude-agent-ledger` 0.7.2 release.
+**claude-agent-ledger 0.7.2** is available from this tap.
+The formula installs the checksum-pinned npm source package and uses Homebrew's
+`bun` runtime. Installation, fixture checks, and final removal are exercised on
+macOS and Linux in CI.
 
 ## Using this tap
 
-You can register the tap with Homebrew:
-
-```sh
-brew tap zemixo/tap
-```
-
-After the formula is reviewed and merged, the installation command will be:
+Install the formula directly; Homebrew adds the tap automatically:
 
 ```sh
 brew install zemixo/tap/claude-agent-ledger
 agent-ledger --version
 ```
+
+If you have already added this tap, run `brew update` before installing.
 
 The formula reads the same local Claude Code logs as the npm package. Use
 `--anonymize` and review subagent and tool names before sharing output.
