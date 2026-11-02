@@ -72,6 +72,29 @@ jobs:
         if: github.event_name != 'pull_request' && steps.ledger-formula.outputs.present == 'true'
         run: brew test-bot --only-formulae "${{ steps.set-up-homebrew.outputs.tap-name }}/claude-agent-ledger"
 
+      - name: Verify claude-agent-ledger uninstall
+        if: github.event_name != 'pull_request' && steps.ledger-formula.outputs.present == 'true'
+        env:
+          LEDGER_FORMULA: ${{ steps.set-up-homebrew.outputs.tap-name }}/claude-agent-ledger
+        run: |
+          # test-bot leaves the tested bottle installed. Require that state so
+          # an absent installation cannot pass this cleanup acceptance check.
+          brew list --versions "$LEDGER_FORMULA"
+          prefix="$(brew --prefix)"
+          cellar="$(brew --cellar claude-agent-ledger)"
+          executable="$prefix/bin/agent-ledger"
+          opt_link="$prefix/opt/claude-agent-ledger"
+          test -x "$executable"
+          test -L "$opt_link"
+          test -d "$cellar"
+
+          HOMEBREW_NO_AUTOREMOVE=1 brew uninstall --formula --force "$LEDGER_FORMULA"
+          for installed_path in "$executable" "$opt_link" "$cellar"; do
+            test ! -e "$installed_path"
+            test ! -L "$installed_path"
+          done
+          echo "Ledger executable, opt link, and Cellar directory removed."
+
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
