@@ -10,7 +10,7 @@ A Homebrew tap for small tools from the Zemixo workshop.
 
 ## Availability
 
-**claude-agent-ledger 0.7.2** is available from this tap.
+**claude-agent-ledger 0.8.0** is available from this tap.
 The formula installs the checksum-pinned npm source package and uses Homebrew's
 `bun` runtime. Installation, fixture checks, and final removal are exercised on
 macOS and Linux in CI.
