@@ -1,8 +1,8 @@
 class ClaudeAgentLedger < Formula
   desc "Inspect Claude Code usage by agent, model, project, and session"
   homepage "https://github.com/zemixo/claude-agent-ledger"
-  url "https://registry.npmjs.org/claude-agent-ledger/-/claude-agent-ledger-0.7.2.tgz"
-  sha256 "c8aabff83da98008ce42115b88c96c4bb6cd970f7666107feb6340697d066163"
+  url "https://registry.npmjs.org/claude-agent-ledger/-/claude-agent-ledger-0.8.0.tgz"
+  sha256 "ee1ec043693684f51de34f36215aabac731acad9febe541ea1e0f3c52d88e6ee"
   license "MIT"
 
   depends_on "bun"
